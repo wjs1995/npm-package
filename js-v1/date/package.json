@@ -1,0 +1,28 @@
+{
+  "name": "@js-v1/date",
+  "version": "1.0.2",
+  "description": "时间格式包",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "null"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjs1995/npm-package.git"
+  },
+  "keywords": [
+    "js",
+    "util",
+    "v1",
+    "date"
+  ],
+  "author": "wangjinsheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wjs1995/npm-package/issues"
+  },
+  "homepage": "https://github.com/wjs1995/npm-package#readme",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
