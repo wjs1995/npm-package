@@ -1,9 +1,12 @@
-import moment from 'moment'
-
+const moment = require('moment')
 const DEFAULT = 'YYYY-MM-DD HH:mm:ss'
 
+function Moment(date = new Date()) {
+    return moment(date)
+}
+
 function Format(date, format = DEFAULT) {
-    return date ? moment(new Date(date)).format(format) : null
+    return date ? Moment(new Date(date)).format(format) : null
 }
 
 
@@ -31,6 +34,7 @@ module.exports = {
     test() {
         console.log('调试')
     },
+    Moment,
     YYYYMM,
     YYYYMMDD,
     YYYYMMDDHH,

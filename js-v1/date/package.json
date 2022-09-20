@@ -1,6 +1,6 @@
 {
   "name": "@js-v1/date",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "时间格式包",
   "main": "lib/index.js",
   "scripts": {
