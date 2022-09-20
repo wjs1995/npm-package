@@ -1,12 +1,12 @@
 const moment = require('moment')
 const DEFAULT = 'YYYY-MM-DD HH:mm:ss'
 
-function Moment(date = new Date()) {
-    return moment(date)
+function Moment(date = new Date(), locale= 'zh-cn') {
+    return moment(date).locale(locale)
 }
 
-function Format(date, format = DEFAULT) {
-    return date ? Moment(new Date(date)).format(format) : null
+function Format(date, format = DEFAULT, locale = 'zh-cn') {
+    return date ? Moment(new Date(date), locale).format(format) : null
 }
 
 
