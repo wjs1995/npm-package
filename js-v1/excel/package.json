@@ -1,0 +1,30 @@
+{
+  "name": "@js-v1/excel",
+  "version": "1.0.8",
+  "description": "excel导入导出工具包",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "valid"
+  ],
+  "files": [
+    "lib/*.js"
+  ],
+  "private": false,
+  "author": "jswang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjs1995/jswang-tool.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wjs1995/jswang-tool/issues"
+  },
+  "homepage": "https://github.com/wjs1995/jswang-tool#readme",
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "xlsx": "^0.18.5"
+  }
+}
