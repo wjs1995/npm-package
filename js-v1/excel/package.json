@@ -1,6 +1,6 @@
 {
   "name": "@js-v1/excel",
-  "version": "1.0.10",
+  "version": "1.0.17",
   "description": "excel导入导出工具包",
   "main": "lib/index.js",
   "scripts": {

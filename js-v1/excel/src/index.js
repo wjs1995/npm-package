@@ -3,6 +3,7 @@ const IExcel = require('./pkg/ImportExcel')
 module.exports = class Xlsx {
     constructor() {
     }
+
     XLSX() {
         return IExcel.Xlsx()
     }
@@ -44,15 +45,15 @@ module.exports = class Xlsx {
         return /\.(xlsx|xls|csv)$/.test(file.name)
     }
 
-    Import(file = null) {
+    Import(fileList = [], isHeader = true, isResults = true) {
         return new Promise((resolve, reject) => {
-            if (!file) {
+            if (!fileList) {
                 reject("请传入文件")
             }
-            if (!this.isExcel(file)) {
+            if (!fileList.every(file => this.isExcel(file))) {
                 reject("请传入excel文件")
             }
-            IExcel.ReadExcel(file).then(resolve).catch(reject)
+            IExcel.ReadExcel(fileList, isHeader, isResults).then(resolve).catch(reject)
         })
     }
 
