@@ -1,7 +1,10 @@
 const Excel = require('./pkg/Export2Excel')
-
+const IExcel = require('./pkg/ImportExcel')
 module.exports = class Xlsx {
     constructor() {
+    }
+    XLSX() {
+        return IExcel.Xlsx()
     }
 
     SetMultiHeader(multiHeader = []) {
@@ -16,7 +19,7 @@ module.exports = class Xlsx {
         this.data = data
     }
 
-    SetFilename(filename) {
+    SetFilename(filename = null) {
         this.filename = filename
     }
 
@@ -24,24 +27,51 @@ module.exports = class Xlsx {
         this.merges = merges
     }
 
-    setAutoWidth(autoWidth = true) {
+    SetAutoWidth(autoWidth = true) {
         this.autoWidth = autoWidth
     }
 
-    Import() {
-        console.log('导入')
+    Reset() {
+        this.SetMultiHeader()
+        this.SetHeader()
+        this.SetData()
+        this.SetFilename()
+        this.SetMerges()
+        this.SetAutoWidth()
     }
 
-    Export() {
-        Excel.export_json_to_excel({
-            multiHeader: this.multiHeader || [],
-            header: this.header || [],
-            data: this.data || [],
-            filename: this.filename || (new Date().getTime()),
-            autoWidth: !!this.autoWidth,
-            bookType: 'xlsx'
+    isExcel(file) {
+        return /\.(xlsx|xls|csv)$/.test(file.name)
+    }
+
+    Import(file = null) {
+        return new Promise((resolve, reject) => {
+            if (!file) {
+                reject("请传入文件")
+            }
+            if (!this.isExcel(file)) {
+                reject("请传入excel文件")
+            }
+            IExcel.ReadExcel(file).then(resolve).catch(reject)
         })
-        console.log('导出')
+    }
+
+    Export(reset = true) {
+        return new Promise((resolve, reject) => {
+            Excel.export_json_to_excel({
+                multiHeader: this.multiHeader || [],
+                header: this.header || [],
+                data: this.data || [],
+                filename: this.filename || (new Date().getTime()),
+                merges: this.merges,
+                autoWidth: !!this.autoWidth,
+                bookType: 'xlsx'
+            })
+            if (reset) {
+                this.Reset()
+            }
+            resolve()
+        })
     }
 }
 
